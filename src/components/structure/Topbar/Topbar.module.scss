@@ -1,0 +1,85 @@
+@import '../../../styles/variables.scss';
+
+.topbar {
+  width: 100%;
+  min-height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 48px;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 100;
+  background: $white;
+  border-bottom: $black20 solid 1px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    & > img {
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    & > span {
+      font-size: 1.2em;
+      font-weight: 300;
+      color: $black;
+      font-family: Montserrat;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &__item {
+      padding: 0 4px;
+      font-size: 0.8em;
+      cursor: pointer;
+      color: $black;
+
+      svg {
+        width: 24px;
+      }
+    }
+  }
+
+  &__logout {
+    svg {
+      color: #f00;
+    }
+  }
+
+  &.mobile {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    position: relative;
+    border: none;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .topbar {
+    padding: 12px 32px;
+    min-height: 54px;
+
+    &__left {
+      gap: 8px;
+
+      & > img {
+        height: 24px;
+      }
+
+      & > span {
+        font-size: 1em;
+      }
+    }
+  }
+}

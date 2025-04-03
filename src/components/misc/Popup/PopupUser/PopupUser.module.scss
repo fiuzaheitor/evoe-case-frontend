@@ -1,0 +1,98 @@
+@import '../../../../styles/variables.scss';
+
+.popup__main__section__box {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 12px;
+  gap: 32px;
+  z-index: 999;
+  padding: 24px;
+
+  .popup__main__section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+
+    h1 {
+      color: $black;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    p {
+      color: $black;
+      font-size: 16px;
+    }
+  }
+
+  .popup__main__section__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .popup__main__section__content__article {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      span,
+      label {
+        color: $black;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input:focus {
+        outline: 2px solid $black;
+      }
+    }
+  }
+
+  .popup__main__section__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    button {
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+
+      &:first-child {
+        background-color: $red100;
+        color: $black;
+
+        &:hover {
+          background-color: darken($red100, 10%);
+        }
+      }
+    }
+
+    .disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .confirmButtons {
+    button:last-child {
+      cursor: pointer;
+
+      &::after {
+        content: none;
+      }
+
+      &:hover {
+        background-color: $black;
+      }
+    }
+  }
+}

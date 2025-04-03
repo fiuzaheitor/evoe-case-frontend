@@ -1,0 +1,35 @@
+@import '../../../styles/variables.scss';
+
+.page__main__section {
+  display: flex;
+  flex-direction: row;
+  scroll-behavior: smooth;
+  transition: all ease-in-out 0.2s;
+  min-height: 100vh;
+  position: relative;
+
+  &__content {
+    width: 100%;
+  }
+
+  .page__main__section__content__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.loading__section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000000;
+}

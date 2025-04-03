@@ -1,0 +1,40 @@
+@import '../../../styles/variables.scss';
+
+.popup__section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1009;
+  top: 0;
+  left: 0;
+
+  .popup__section__box {
+    display: flex;
+    flex-direction: column;
+    background: $white;
+    min-width: 500px;
+    max-width: 800px;
+    height: fit-content;
+    padding: 32px;
+    border-radius: 12px;
+    gap: 32px;
+    z-index: 999;
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000ac;
+  }
+
+  &.closed {
+    display: none;
+  }
+}

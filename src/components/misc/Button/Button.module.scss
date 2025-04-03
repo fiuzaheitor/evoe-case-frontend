@@ -1,0 +1,57 @@
+@import '../../../styles/variables.scss';
+
+.button {
+  display: flex;
+  outline: none;
+  border: none;
+  transition: ease-in-out 0.05s;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px #00000029;
+
+  span {
+    display: flex;
+    align-items: center;
+    color: $white;
+    font-size: 16px;
+    font-weight: 700;
+
+    svg {
+      color: $white;
+    }
+  }
+
+  background: $black;
+
+  &:hover {
+    border: 1px solid $black;
+    background: $white;
+
+    span {
+      color: $black;
+    }
+  }
+}
+
+.active {
+  cursor: pointer;
+}
+
+.inactive {
+  cursor: not-allowed;
+  background-color: $black20;
+
+  span {
+    color: $black40;
+  }
+
+  &:hover {
+    border: none;
+    background-color: $black20;
+
+    span {
+      color: $black40;
+    }
+  }
+}

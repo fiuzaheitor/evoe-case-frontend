@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+
+.loading__component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  animation: loadingAnimation 1s infinite linear;
+  margin: 32px 0px;
+  transform-origin: center;
+  z-index: 999999999999999;
+
+  @keyframes loadingAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  span {
+    font-size: 3em;
+    font-weight: 700;
+    color: $black;
+  }
+}

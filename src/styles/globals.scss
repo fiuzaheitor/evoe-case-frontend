@@ -1,0 +1,84 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Inconsolata';
+  font-weight: 500;
+  line-height: 1em;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background: $white
+}
+
+h1 {
+  font-size: 2.3em;
+  font-weight: 600;
+  line-height: 1.2em;
+  color: $black;
+  font-family: 'Poppins';
+}
+
+h2 {
+  font-size: 1.9em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: $black;
+  font-family: 'Poppins';
+}
+
+h3 {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: $black;
+  font-family: 'Poppins';
+}
+
+h4 {
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: $black;
+  font-family: 'Inconsolata';
+}
+
+h5 {
+  font-size: 0.9em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: $black;
+  font-family: 'Inconsolata';
+}
+
+h6 {
+  font-size: 0.83em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: $black;
+  font-family: 'Inconsolata';
+}
+
+p,
+span {
+  color: $black;
+  line-height: 1.2em;
+  font-family: 'Inconsolata';
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  color: $black;
+  font-family: 'Inconsolata';
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
