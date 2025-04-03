@@ -40,14 +40,7 @@ export const PopupUser = ({ dados, onClick, type }: PopupUserProps) => {
         <div className={styles.popup__main__section__content}>
           {dados && type === 'email' && (
             <div className={styles.popup__main__section__content__article}>
-              <TextInput
-                type={'email'}
-                value={dados}
-                label={'E-mail atual'}
-                onChange={setInputValue}
-                placeholder={'E-mail atual'}
-                disabled
-              />
+              <TextInput type={'email'} value={dados} label={'E-mail atual'} onChange={setInputValue} placeholder={'E-mail atual'} disabled />
             </div>
           )}
           <div className={styles.popup__main__section__content__article}>
@@ -67,5 +60,4 @@ export const PopupUser = ({ dados, onClick, type }: PopupUserProps) => {
       </div>
     </Popup>
   )
-
 }

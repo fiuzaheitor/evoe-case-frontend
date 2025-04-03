@@ -82,9 +82,5 @@ export const AuthProvider: React.FC<IAuthProvider> = ({ children }) => {
     document.cookie = `_a_tc=; expires=${pastDate}; domain=${process.env.REACT_APP_DOMINIO_COOKIE}; Secure; Path=/`
   }
 
-  return (
-    <AuthContext.Provider value={{ ...loggedInfo, authenticate, logout }}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={{ ...loggedInfo, authenticate, logout }}>{children}</AuthContext.Provider>
 }

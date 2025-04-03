@@ -51,14 +51,14 @@ export const Login = () => {
         return
       }
 
-      const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-.\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+      const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-.\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
       if (!formData.email.match(regEx)) {
-        showToast("O endereço de email não é válido", 'error', 'error-email');
+        showToast('O endereço de email não é válido', 'error', 'error-email')
         return
       }
 
       if (formData.password.length < 8 || !/[A-Z]/.test(formData.password) || !/[a-z]/.test(formData.password) || !/[0-9]/.test(formData.password)) {
-        showToast('A senha deve ter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.', 'error', 'error-password-invalid');
+        showToast('A senha deve ter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.', 'error', 'error-password-invalid')
         return
       }
 

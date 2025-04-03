@@ -12,109 +12,108 @@ import { getCookie } from '../../utils/cookies'
 import { isTokenValid } from '../../hoc/AuthContext'
 
 export const Profile = () => {
-  const [openPopupForm, setOpenPopupForm] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [openPopupForm, setOpenPopupForm] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
   const auth: any = isTokenValid(getCookie('_a_tc') as string)
-  console.log(auth);
+  console.log(auth)
 
   const [userData, setUserData] = useState({
     name: '',
     email: '',
-  });
+  })
 
-  const [hasChanges, setHasChanges] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false)
 
   useEffect(() => {
-    getUser(auth?.ui, "user_id,name,email")
+    getUser(auth?.ui, 'user_id,name,email')
       .then((res: any) => {
         if (!res || res.length === 0) {
-          throw new Error('User not found');
+          throw new Error('User not found')
         }
         setUserData({
           name: res[0].name,
           email: res[0].email,
-        });
+        })
 
-        setIsLoading(false);
+        setIsLoading(false)
       })
       .catch((err: any) => {
-        showToast('Erro ao carregar os dados do usuário', 'error');
+        showToast('Erro ao carregar os dados do usuário', 'error')
       })
-  }, [auth?.ui]);
+  }, [auth?.ui])
 
   const handlePopupClick = async (isSubmit: boolean, inputValue?: string, typeForm?: string) => {
-    if (!isSubmit) return setOpenPopupForm(null);
+    if (!isSubmit) return setOpenPopupForm(null)
 
     if (typeForm === 'email') {
       if (!inputValue || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue)) {
-        showToast('Insira um email válido!', 'error');
-        return;
+        showToast('Insira um email válido!', 'error')
+        return
       }
-      const res = await updateUser(auth?.ui, { email: inputValue }).then((res: any) => {
-        if (res.status !== 200) {
-          throw new Error('Error updating user data');
-        }
+      const res = await updateUser(auth?.ui, { email: inputValue })
+        .then((res: any) => {
+          if (res.status !== 200) {
+            throw new Error('Error updating user data')
+          }
 
-        showToast('E-mail atualizado com sucesso!', 'success');
-        return "success";
-      }).catch((err: any) => {
-        showToast('Erro ao atualizar o e-mail', 'error');
-        return "error";
-      });
+          showToast('E-mail atualizado com sucesso!', 'success')
+          return 'success'
+        })
+        .catch((err: any) => {
+          showToast('Erro ao atualizar o e-mail', 'error')
+          return 'error'
+        })
 
-      return res;
+      return res
     } else {
-      if (
-        !inputValue ||
-        inputValue.length < 8 ||
-        !/[A-Z]/.test(inputValue) ||
-        !/[a-z]/.test(inputValue) ||
-        !/[0-9]/.test(inputValue)
-      ) {
-        showToast('A senha deve ter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.', 'error', 'error-password-invalid');
-        return;
+      if (!inputValue || inputValue.length < 8 || !/[A-Z]/.test(inputValue) || !/[a-z]/.test(inputValue) || !/[0-9]/.test(inputValue)) {
+        showToast('A senha deve ter no mínimo 8 caracteres, uma letra maiúscula, uma letra minúscula e um número.', 'error', 'error-password-invalid')
+        return
       }
 
-      const res = await updateUser(auth?.ui, { password: inputValue }).then((res: any) => {
-        if (res.status !== 200) {
-          throw new Error('Error updating user data');
-        }
+      const res = await updateUser(auth?.ui, { password: inputValue })
+        .then((res: any) => {
+          if (res.status !== 200) {
+            throw new Error('Error updating user data')
+          }
 
-        showToast('Senha atualizada com sucesso!', 'success');
-        setHasChanges(false);
-        return "success";
-      }).catch((err: any) => {
-        showToast('Erro ao atualizar a senha', 'error');
-        return "error";
-      });
+          showToast('Senha atualizada com sucesso!', 'success')
+          setHasChanges(false)
+          return 'success'
+        })
+        .catch((err: any) => {
+          showToast('Erro ao atualizar a senha', 'error')
+          return 'error'
+        })
 
-      return res;
+      return res
     }
-  };
+  }
 
   const handleSubmit = async () => {
-    const { name } = userData;
+    const { name } = userData
     if (name) {
-      await updateUser(auth?.ui, { name: name }).then((res: any) => {
-        if (res.status !== 200) {
-          throw new Error('Error updating user data');
-        }
+      await updateUser(auth?.ui, { name: name })
+        .then((res: any) => {
+          if (res.status !== 200) {
+            throw new Error('Error updating user data')
+          }
 
-        showToast('Dados atualizados com sucesso!', 'success');
-        setHasChanges(false);
-      }
-      ).catch((err: any) => {
-        showToast('Erro ao atualizar os dados do usuário', 'error');
-      });
+          showToast('Dados atualizados com sucesso!', 'success')
+          setHasChanges(false)
+        })
+        .catch((err: any) => {
+          showToast('Erro ao atualizar os dados do usuário', 'error')
+        })
     } else {
-      showToast('Preencha todos os campos', 'error');
+      showToast('Preencha todos os campos', 'error')
     }
-  };
+  }
 
   const handleChange = (field: string, value: string) => {
-    setUserData((prev) => ({ ...prev, [field]: value }));
-    setHasChanges(true);
-  };
+    setUserData((prev) => ({ ...prev, [field]: value }))
+    setHasChanges(true)
+  }
 
   return (
     <Pages isLoading={isLoading}>
@@ -131,39 +130,16 @@ export const Profile = () => {
             <AccountCircle />
           </div>
           <div className={styles.profile__main__forms}>
-            <TextInput
-              value={userData.name}
-              onChange={(e: any) => handleChange('name', e)}
-              placeholder="Nome"
-              type="text"
-            />
+            <TextInput value={userData.name} onChange={(e: any) => handleChange('name', e)} placeholder="Nome" type="text" />
             <div className={styles.profile__main__forms__item}>
-              <TextInput
-                value={userData?.email || ''}
-                placeholder="E-mail"
-                type="text"
-                disabled
-              />
-              <TextInput
-                value="••••••••"
-                placeholder="Senha"
-                type="text"
-                disabled
-              />
+              <TextInput value={userData?.email || ''} placeholder="E-mail" type="text" disabled />
+              <TextInput value="••••••••" placeholder="Senha" type="text" disabled />
             </div>
           </div>
           <div className={styles.profile__main__buttons}>
             <div className={styles.profile__main__buttons__edit}>
-              <Button
-                text="Mudar Email"
-                type="button"
-                onClick={() => setOpenPopupForm('email')}
-              />
-              <Button
-                text="Mudar Senha"
-                type="button"
-                onClick={() => setOpenPopupForm('senha')}
-              />
+              <Button text="Mudar Email" type="button" onClick={() => setOpenPopupForm('email')} />
+              <Button text="Mudar Senha" type="button" onClick={() => setOpenPopupForm('senha')} />
             </div>
             <div className={`${styles.profile__main__buttons__save} ${!hasChanges ? styles.noChange : ''}`}>
               <Button text="Salvar" type="button" onClick={handleSubmit} active={hasChanges} />
@@ -172,5 +148,5 @@ export const Profile = () => {
         </div>
       </div>
     </Pages>
-  );
-};
+  )
+}

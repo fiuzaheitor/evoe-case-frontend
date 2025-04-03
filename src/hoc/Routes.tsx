@@ -35,10 +35,9 @@ function ProtectedRoute() {
 
   return (
     <Routes>
-      {routes
-        .map(({ route, component, protect }, index) => (
-          <Route key={index} path={route} element={<Protecting component={component} protect={protect} />} />
-        ))}
+      {routes.map(({ route, component, protect }, index) => (
+        <Route key={index} path={route} element={<Protecting component={component} protect={protect} />} />
+      ))}
       <Route path="*" element={<Navigate to={!auth ? 'signin' : '/profile'} />} />
     </Routes>
   )

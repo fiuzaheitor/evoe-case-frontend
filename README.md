@@ -36,4 +36,3 @@ Isso iniciará o servidor de desenvolvimento e o projeto estará disponível par
 ## 📄 Licença
 
 Este projeto é apenas para fins de avaliação técnica.
-

@@ -32,13 +32,13 @@
     width: 100%;
     position: relative;
 
-    &>input {
+    & > input {
       padding: 12px;
-      border: .5px solid $black20;
+      border: 0.5px solid $black20;
       background: $white;
       color: $black;
       border-radius: 5px;
-      box-shadow: inset 0px 1px 3px #00000029;
+      box-shadow: inset 0px 1px 3px $shadow;
       outline: none;
       width: 100%;
     }
@@ -52,7 +52,7 @@
       right: 12px;
       transform: translateY(-50%);
 
-      &>svg {
+      & > svg {
         width: 20px;
         color: $black;
         cursor: pointer;
@@ -61,7 +61,6 @@
           transform: scale(1.1);
         }
       }
-
     }
   }
 }
@@ -70,19 +69,18 @@
   cursor: not-allowed;
 
   .input__container__box {
-    &>input {
+    & > input {
       color: $black20;
     }
 
     ::placeholder {
       color: $black20;
     }
-    
-    
+
     &__showPassword {
       button {
         svg {
-          color: $black20
+          color: $black20;
         }
       }
     }
@@ -96,7 +94,7 @@
     }
 
     &__input {
-      &>input {
+      & > input {
         padding: 8px;
       }
     }

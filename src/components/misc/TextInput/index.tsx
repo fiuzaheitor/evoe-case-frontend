@@ -10,7 +10,7 @@ export const TextInput = ({
   value,
   min,
   max,
-  disabled
+  disabled,
 }: {
   label?: string
   type: string
@@ -37,9 +37,7 @@ export const TextInput = ({
 
   return (
     <div className={`${t.input__container} ${disabled && t.disabled}`}>
-      {label &&
-        <label className={t.input__container__label}>{label}</label>
-      }
+      {label && <label className={t.input__container__label}>{label}</label>}
       <div className={t.input__container__box}>
         <input
           type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
@@ -51,12 +49,11 @@ export const TextInput = ({
           min={min}
           max={max}
         />
-        {(type === 'password' && value !== '') &&
-          (
-            <div className={t.input__container__box__showPassword}>
-                {showPassword ? <Visibility onClick={handleShowPassword} /> : <VisibilityOff onClick={handleShowPassword} />}
-            </div>
-          )}
+        {type === 'password' && value !== '' && (
+          <div className={t.input__container__box__showPassword}>
+            {showPassword ? <Visibility onClick={handleShowPassword} /> : <VisibilityOff onClick={handleShowPassword} />}
+          </div>
+        )}
       </div>
     </div>
   )
